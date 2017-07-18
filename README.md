@@ -1,2 +1,5 @@
 # arrow-neural-network
-a neural network program which learn how to shoot at a target
+
+this is my first neural network project.
+
+feel free to make changes and inprove on the project

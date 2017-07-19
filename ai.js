@@ -1,17 +1,24 @@
-function AI(genes) {
+function AI(c, genes) {
 
   this.input = [];
   this.hidden = [];
   this.output = [];
   this.wages = [];
+  this.color;
   this.fitness;
   //----if there are wages given it takes those. If not it creates new genes----\\
   if (genes) {
     this.wages = genes;
   } else {
     for (var i = 0; i < 12; i++) {
-      this.wages.push(random(0, 1))
+      this.wages.push(random(0, 2))
     }
+  }
+  //----generates the color if there is none given----\\
+  if (c) {
+    this.color = c;
+  } else {
+    this.color = color(random(255), random(255), random(255));
   }
   this.input.push(target.x);
   this.input.push(target.y);
@@ -33,7 +40,7 @@ function AI(genes) {
   this.mutation = function() {
     for (var i = 0; i < this.wages.length; i++) {
       if (random(1) < 0.01) {
-        this.wages[i] += random(-0.005, 0.005);
+        this.wages[i] += random(-0.05, 0.05);
       }
     }
   }

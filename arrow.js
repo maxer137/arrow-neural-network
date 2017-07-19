@@ -1,4 +1,4 @@
-function Arrow(x, y, r, v) {
+function Arrow(x, y, r, v, c) {
 
   this.x = x;
   this.y = y;
@@ -6,7 +6,7 @@ function Arrow(x, y, r, v) {
   this.r = r;
   this.xforce = cos(this.r) * this.v;
   this.yforce = sin(this.r) * this.v;
-  arrowimg = loadImage("images/arrow.png");
+  this.color = c;
 
   this.show = function() {
     push();
@@ -17,7 +17,9 @@ function Arrow(x, y, r, v) {
     this.yforce += 0.06;
     fill(200, 200, 200);
     imageMode(CORNER)
-    image(arrowimg, 0, 0, 30, 10);
+    fill(this.color, 100)
+    noStroke();
+    rect(0, 0, 30, 10)
     pop();
     this.r = atan2(this.yforce, this.xforce);
     this.x += this.xforce * 4;

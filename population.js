@@ -7,7 +7,7 @@ function Population() {
     for (var i = 0; i < partnerA.length; i++) {
       if (i > mid) {
         newgenes[i] = partnerA[i];
-        color = lerpColor(Ca, Cb, .33);
+        color = lerpColor(Ca, Cb, .0833 * i);
       } else {
         newgenes[i] = partnerB[i];
       }

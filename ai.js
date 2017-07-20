@@ -18,7 +18,7 @@ function AI(c, genes) {
   if (c) {
     this.color = c;
   } else {
-    this.color = color(random(255), random(255), random(255));
+    this.color = color(random(255), random(255), random(255), 150);
   }
   this.input.push(target.x);
   this.input.push(target.y);
@@ -36,11 +36,11 @@ function AI(c, genes) {
     this.output[1] = (this.hidden[0] * this.wages[9]) + (this.hidden[1] * this.wages[10]) + (this.hidden[2] * this.wages[11]) / 3;
 
   }
-  //---mutation program----\\
+  //---mutation----\\
   this.mutation = function() {
     for (var i = 0; i < this.wages.length; i++) {
-      if (random(1) < 0.01) {
-        this.wages[i] += random(-0.05, 0.05);
+      if (random(1) < mRate.value() / 100) {
+        this.wages[i] += random(-0.1, 0.1);
       }
     }
   }

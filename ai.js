@@ -39,7 +39,7 @@ function AI(c, genes) {
   //---mutation----\\
   this.mutation = function() {
     for (var i = 0; i < this.wages.length; i++) {
-      if (random(1) < mRate.value() / 100) {
+      if (random(1) < mRate.value() / 1000) {
         this.wages[i] += random(-0.1, 0.1);
       }
     }

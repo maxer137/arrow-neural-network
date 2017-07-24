@@ -1,5 +1,6 @@
 var bestnumb;
 var bow;
+var speed;
 var tcount = 0;   //counter for when to change targets position
 var best = 999;
 var count = 0;
@@ -21,6 +22,8 @@ function setup() {
   popsize = createSlider(10, 200, 50);  //population size
   createP('mutation rate');
   mRate = createSlider(0, 200, 10);    //mutation rate
+  createP('speed');
+  speed = createSlider(1, 10, 1);
   createP('link to github page&nbsp;<a href="https://github.com/maxer137/arrow-neural-network/">here');
   population = new Population();
   bow = new bow(50, 300);
@@ -42,18 +45,19 @@ function draw() {
   //----puts fitness in a array----\\
   if (arrows.length > 0) {
     for (var i = arrows.length - 1; i >= 0; i--) {
-      if (dist(arrows[i].x, arrows[i].y, target.x, target.y) < fit[i]) {
-        fit[i] = dist(arrows[i].x, arrows[i].y, target.x, target.y);
-        if (fit[i] < 12.5) {
-          fit[i] /= 10;
-          hit++;
+      for (var j = 0; j < speed.value(); j++) {
+        if (dist(arrows[i].x, arrows[i].y, target.x, target.y) < fit[i]) {
+          fit[i] = dist(arrows[i].x, arrows[i].y, target.x, target.y);
+          if (fit[i] < 12.5) {
+            fit[i] /= 10;
+            hit++;
+          }
+        }
+        if (fit[i] > 12.5) {
+          arrows[i].update();
         }
       }
-      if (fit[i] < 12.5) {
-        arrows[i].still();
-      } else {
-        arrows[i].show();
-      }
+      arrows[i].show();
     }
   }
   count++;
@@ -79,7 +83,7 @@ function draw() {
       }
       nextgen = [];
       for (var i = 0; i < fit.length; i++) {
-        var n = 1000 / fit[i];
+        var n = 5000 / fit[i];
         for (var j = 0; j < n; j++) {
           nextgen.push(type[i])
         }

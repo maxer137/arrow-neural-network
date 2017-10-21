@@ -6,4 +6,4 @@ this program learns how to shoot at a target using both a neural network and gen
 
 feel free to make changes and improve on the project
 
-link to demo site: http://maxcraft.vanling.net/arrow/
+link to demo page: http://maxer137.com/projects/arrow-net/
